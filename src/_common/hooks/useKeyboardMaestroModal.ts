@@ -28,6 +28,11 @@ export function useKeyboardMaestroModal({
   }, []);
 
   useLayoutEffect(() => {
+    // TODO: remove it
+    if (location.origin === 'http://localhost:63342') {
+      setIsModalReady(true);
+      return;
+    }
     window.KMDidShowWindow = () => {
       window.document.title = title;
       window.KeyboardMaestro.ResizeWindow(`${winWidth},${winHeight}`);
