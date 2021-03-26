@@ -1,3 +1,4 @@
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -54,6 +55,9 @@ module.exports = {
         template: modalTemplate,
       }),
     ),
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['**/*'],
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',

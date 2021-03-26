@@ -8,13 +8,16 @@ import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/AddCircleOutlineSharp';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-import { Editor } from '../../_common/components/Editor';
+import { Editor } from '@skv/react-code-mirror/lib/Editor';
+
 import { useCommonModsPreset } from '../../_common/components/Editor/hooks/presets/common';
 import { ModalContainer } from '../../_common/components/ModalContainer';
 import { useMaterialAutocompleteWithCreatable } from '../../_common/hooks/useMaterialAutocompleteWithCreatable';
 import { useKeyboardMaestroModal } from '../../_common/hooks/useKeyboardMaestroModal';
 import { useMarkdownCardTemplate } from './hooks/useMarkdownCardTemplate';
 import { useMarkdownModal } from './hooks/useMarkdownModal';
+
+import '@skv/react-code-mirror/lib/Editor/code-mirror.css';
 
 export const AnkiMarkdownModal = (): JSX.Element => {
   const kmModal = useKeyboardMaestroModal({
