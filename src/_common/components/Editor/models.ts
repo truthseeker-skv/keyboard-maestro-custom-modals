@@ -5,7 +5,7 @@ export interface IEditorModification {
   onEditorInit?: (editor: CodeMirror.Editor) => void;
 }
 
-export type VimMode = 'normal'|'visual'|'insert'|'replace';
+export type VimMode = 'normal' | 'visual' | 'insert' | 'replace';
 
 export type EditorTheme = '3024-day' | '3024-night' | 'abcdef' | 'ambiance-mobile' | 'ambiance' | 'ayu-dark'
   | 'ayu-mirage' | 'base16-dark' | 'base16-light' | 'bespin' | 'blackboard' | 'cobalt' | 'colorforth' | 'darcula'
