@@ -13,7 +13,7 @@ export function useEngWordsModal({ kmModal }: IUseAnkiNoteModal) {
   const ankiDecks = useAnkiDecks();
 
   const handleSubmit = useCallback(() => {
-    invariant(ankiDecks.selected, 'Exporter and deck must be specified!');
+    invariant(ankiDecks.selected, 'Deck must be specified!');
 
     const dataToSend = {
       deck: ankiDecks.selected!,

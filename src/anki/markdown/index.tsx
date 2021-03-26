@@ -11,9 +11,9 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Editor } from '../../_common/components/Editor';
 import { useCommonModsPreset } from '../../_common/components/Editor/hooks/presets/common';
 import { ModalContainer } from '../../_common/components/ModalContainer';
-import { useCreatableAutocomplete } from '../../_common/hooks/useCreatableAutocomplete';
+import { useMaterialAutocompleteWithCreatable } from '../../_common/hooks/useMaterialAutocompleteWithCreatable';
 import { useKeyboardMaestroModal } from '../../_common/hooks/useKeyboardMaestroModal';
-import { useEditorAnkiCardTemplate } from './hooks/useEditorAnkiCardTemplate';
+import { useMarkdownCardTemplate } from './hooks/useMarkdownCardTemplate';
 import { useMarkdownModal } from './hooks/useMarkdownModal';
 
 export const AnkiMarkdownModal = (): JSX.Element => {
@@ -25,7 +25,7 @@ export const AnkiMarkdownModal = (): JSX.Element => {
 
   const mdModal = useMarkdownModal({ kmModal });
 
-  const autocomplete = useCreatableAutocomplete({
+  const autocomplete = useMaterialAutocompleteWithCreatable({
     groupBy: (opt) => opt.split('::')[0],
     list: mdModal.decks.list,
     onChange: mdModal.decks.selectItem
@@ -36,7 +36,7 @@ export const AnkiMarkdownModal = (): JSX.Element => {
     onEditorExit: mdModal.close,
   });
 
-  const watchCardTemplateMod = useEditorAnkiCardTemplate();
+  const watchCardTemplateMod = useMarkdownCardTemplate();
 
   return (
     <ModalContainer isKmModalReady={kmModal.isModalReady}>

@@ -1,16 +1,16 @@
 import { useState, useCallback } from 'react';
 
-export interface IUseCreatableAutocomplete {
+export interface IUseMaterialAutocompleteWithCreatable {
   list: Array<string>;
   groupBy: (opt: string) => string;
   onChange: (value: string | null) => void;
 }
 
-export function useCreatableAutocomplete({
+export function useMaterialAutocompleteWithCreatable({
   list,
   groupBy,
   onChange,
-}: IUseCreatableAutocomplete) {
+}: IUseMaterialAutocompleteWithCreatable) {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = useCallback((_: unknown, value: string) => {
@@ -26,7 +26,9 @@ export function useCreatableAutocomplete({
   }, []);
 
   return {
-    options: (list || []).concat(inputValue).map((val) => ({ title: val })),
+    options: list
+      .concat(inputValue)
+      .map((val) => ({ title: val })),
     groupBy: handleGroupBy,
     onInputChange: handleInputChange,
     onChange: handleOnChange,

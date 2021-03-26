@@ -3,17 +3,18 @@ import { useCallback, useState } from 'react';
 
 import { IKeyboardMaestroModal } from '../../../_common/hooks/useKeyboardMaestroModal';
 import useAnkiDecks from '../../_common/hooks/useDecks';
+import { FRONT_SIDE_LABEL, BACK_SIDE_LABEL } from '../consts';
 
 export interface ICardSides {
   front: string;
   back: string;
 }
 
-export interface IUseAnkiNoteModal {
+export interface IUseMarkdownModal {
   kmModal: IKeyboardMaestroModal;
 }
 
-export function useMarkdownModal({ kmModal }: IUseAnkiNoteModal) {
+export function useMarkdownModal({ kmModal }: IUseMarkdownModal) {
   const [content, setContent] = useState(getCardTemplate());
   const ankiDecks = useAnkiDecks();
 
@@ -46,21 +47,24 @@ export function useMarkdownModal({ kmModal }: IUseAnkiNoteModal) {
 
 function getCardTemplate(): string {
   return '' +
-`
+`${FRONT_SIDE_LABEL}
 
 
+${BACK_SIDE_LABEL}
 
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 `;
 }
 
 function getCardsFromContent(content: string): Array<ICardSides> {
-  const cards = content.split(/'____+/);
+  const cards = content.split(/–––+/);
   const cardToFields = cards
     .filter(c => !!c.trim())
     .map((card) => {
       return card
-        .split(/\[\[Front]]|\[\[Back]]/sigm)
+        .split(new RegExp(`${FRONT_SIDE_LABEL}|${BACK_SIDE_LABEL}`, 'sigm'))
         .slice(-2)
         .map((it) => it.trim());
     });

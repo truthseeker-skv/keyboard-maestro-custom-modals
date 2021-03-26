@@ -28,7 +28,7 @@ export function useKeyboardMaestroModal({
   }, []);
 
   useLayoutEffect(() => {
-    // TODO: remove it
+    // TODO: for testing in browser purposes
     if (location.origin === 'http://localhost:63342') {
       setIsModalReady(true);
       return;

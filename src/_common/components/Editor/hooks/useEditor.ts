@@ -31,7 +31,7 @@ export function useEditor(props: IEditorProps) {
 
     editor.current.on('change', handleOnEditorChange);
 
-    // TODO: create hook for case of editor destruction
+    // TODO: release resources on destruct
     modsHooks.onEditorInit(editor.current);
 
     editor.current.refresh();

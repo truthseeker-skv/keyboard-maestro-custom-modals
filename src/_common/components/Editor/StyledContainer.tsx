@@ -20,22 +20,21 @@ export const Container = styled.div<IContainerProps>`
     ${({ theme }) => css`
       background-color: ${theme.lineSelection.bgColor};
       color: ${theme.lineSelection.color};
-    `} 
+    `}
   }
 
   & > div.CodeMirror {
     position: relative;
-    height: 100%;
-    max-height: 100%;
+    height: 440px;
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     font-size: 16px;
 
     & .activeline {
       position: relative;
+
       ${({ theme }) => css`
         background-color: ${theme.activeLine.bgColor};
       `}
-
       & .CodeMirror-linenumber {
         ${({ theme }) => css`
           background-color: ${theme.activeLineNumber.bgColor};
@@ -62,11 +61,12 @@ export const Container = styled.div<IContainerProps>`
         ${blinkingCursorAnimation(theme.blinkingCursorAnimation)} 1.06s steps(1) infinite;
       `}
     }
-    
+
     & .CodeMirror-dialog-bottom {
       position: relative;
+      display: none;
       z-index: 3;
-      
+
       & input {
         width: calc(100% - 16px);
         outline: none;
@@ -74,6 +74,15 @@ export const Container = styled.div<IContainerProps>`
           background-color: ${theme.bottomDialogInput.bgColor};
           color: ${theme.bottomDialogInput.color};
         `}
+      }
+    }
+
+    & .anki-card-side-title {
+      background-color: #353535;
+
+      &, .cm-link {
+        color: #826464;
+        font-size: 14px;
       }
     }
   }
