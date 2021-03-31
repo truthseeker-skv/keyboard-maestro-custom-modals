@@ -2,15 +2,16 @@ import CodeMirror from 'codemirror';
 import { useCallback } from 'react';
 import curry from 'lodash/curry'
 
-import { IEditorModification } from '../../../_common/components/Editor/models';
+import { IEditorModification } from '@truthseeker-skv/react-code-mirror/lib/Editor/models';
+
 import { FRONT_SIDE_LABEL, BACK_SIDE_LABEL } from '../consts';
 
 const titleTemplates = [{
   name: 'front',
-  template: new RegExp(`^${FRONT_SIDE_LABEL}$`),
+  template: new RegExp(`${escapeTemplate(FRONT_SIDE_LABEL)}`),
 }, {
   name: 'back',
-  template: new RegExp(`^${BACK_SIDE_LABEL}$`),
+  template: new RegExp(`^${escapeTemplate(BACK_SIDE_LABEL)}$`),
 }];
 
 export function useMarkdownCardTemplate(): IEditorModification {
@@ -32,4 +33,8 @@ function findTemplates(templates: typeof titleTemplates, editor: CodeMirror.Edit
       }
     })
   });
+}
+
+function escapeTemplate(tmlp: string): string {
+  return tmlp.replaceAll('[', '\\[').replaceAll(']', '\]');
 }

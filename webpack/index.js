@@ -18,7 +18,7 @@ module.exports = {
     filename: '[name].[contenthash].js',
   },
   mode: 'development',
-  devtool: 'cheap-module-source-map',
+  devtool: 'eval',
   watch: true,
   module: {
     rules: [
@@ -67,5 +67,3 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   }
 };
-
-
